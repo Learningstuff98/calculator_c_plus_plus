@@ -8,7 +8,16 @@ std::string get_desired_operation() {
   return desired_operation;
 };
 
-bool is_valid_integer(std::string const &input) {
+bool is_valid_integer(std::string &input) {
+  // no empty inputs
+
+  // what if one of the inputs is 0?
+
+  bool is_negative {false};
+  if(input[0] == '-') {
+    input.erase(0, 1);
+    is_negative = true;
+  }
   if(input[0] == '0') {
     return false;
   }
@@ -27,6 +36,9 @@ bool is_valid_integer(std::string const &input) {
     ) {
       return false;
     }
+  }
+  if(is_negative) {
+    input.insert(0, 1, '-');
   }
   return true;
 };
