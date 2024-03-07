@@ -9,7 +9,6 @@ std::string get_desired_operation() {
 };
 
 bool is_valid_integer(std::string &input) {
-  // no empty inputs
 
   // what if one of the inputs is 0?
 
@@ -17,6 +16,9 @@ bool is_valid_integer(std::string &input) {
   if(input[0] == '-') {
     input.erase(0, 1);
     is_negative = true;
+  }
+  if(input == "") {
+    return false;
   }
   if(input[0] == '0') {
     return false;
