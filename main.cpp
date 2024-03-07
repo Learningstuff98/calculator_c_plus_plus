@@ -20,7 +20,7 @@ bool is_valid_integer(std::string &input) {
   if(input == "") {
     return false;
   }
-  if(input[0] == '0') {
+  if(input.length() > 1 && input[0] == '0') {
     return false;
   }
   for(auto const &input_char: input) {
