@@ -2,7 +2,7 @@
 
 std::string get_desired_operation() {
   std::cout << "Please enter one of the following options:" << std::endl;
-  std::cout << "add, subtract or exit." << std::endl;
+  std::cout << "add, subtract, divide or exit." << std::endl;
   std::string desired_operation {""};
   getline(std::cin, desired_operation);
   return desired_operation;
@@ -54,6 +54,8 @@ std::string get_input(std::string message) {
 };
 
 void handle_input(std::string &desired_operation) {
+  // Note to self: Change the names int_1 and int_2 to input_1 and input_2.
+  // Also, shouldn't be able to divide by 0. Should throw error instead.
   std::string int_1 {get_input("Enter the first number:")};
   std::string int_2 {get_input("Enter the second number:")};
   if(int_1 != "error" && int_2 != "error") {
@@ -62,6 +64,12 @@ void handle_input(std::string &desired_operation) {
     }
     if(desired_operation == "subtract") {
       std::cout << "The difference is: " << (std::stoi(int_1) - std::stoi(int_2)) << std::endl;
+    }
+    if(desired_operation == "divide") {
+      int int_1_as_int = std::stoi(int_1);
+      int int_2_as_int = std::stoi(int_2);
+      double quotient {int_1_as_int / double(int_2_as_int)};
+      std::cout << "The quotient is: " << quotient << std::endl;
     }
   } else {
     std::cout << "ERROR! ERROR! INVLID INPUT!" << std::endl;
@@ -75,6 +83,9 @@ int main() {
       handle_input(desired_operation);
       desired_operation = get_desired_operation();
     } else if(desired_operation == "subtract") {
+      handle_input(desired_operation);
+      desired_operation = get_desired_operation();
+    } else if(desired_operation == "divide") {
       handle_input(desired_operation);
       desired_operation = get_desired_operation();
     } else {
