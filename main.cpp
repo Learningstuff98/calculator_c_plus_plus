@@ -54,7 +54,6 @@ std::string get_input(std::string message) {
 };
 
 void handle_input(std::string &desired_operation) {
-  // Also, shouldn't be able to divide by 0. Should throw error instead.
   std::string input_1 {get_input("Enter the first number:")};
   std::string input_2 {get_input("Enter the second number:")};
   if(input_1 != "error" && input_2 != "error") {
@@ -67,6 +66,10 @@ void handle_input(std::string &desired_operation) {
     if(desired_operation == "divide") {
       int input_1_as_int = std::stoi(input_1);
       int input_2_as_int = std::stoi(input_2);
+      if(input_2_as_int == 0) {
+        std::cout << "ERROR! ERROR! CAN'T DIVIDE BY 0!" << std::endl;
+        return;
+      }
       double quotient {input_1_as_int / double(input_2_as_int)};
       std::cout << "The quotient is: " << quotient << std::endl;
     }
