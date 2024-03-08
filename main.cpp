@@ -54,21 +54,20 @@ std::string get_input(std::string message) {
 };
 
 void handle_input(std::string &desired_operation) {
-  // Note to self: Change the names int_1 and int_2 to input_1 and input_2.
   // Also, shouldn't be able to divide by 0. Should throw error instead.
-  std::string int_1 {get_input("Enter the first number:")};
-  std::string int_2 {get_input("Enter the second number:")};
-  if(int_1 != "error" && int_2 != "error") {
+  std::string input_1 {get_input("Enter the first number:")};
+  std::string input_2 {get_input("Enter the second number:")};
+  if(input_1 != "error" && input_2 != "error") {
     if(desired_operation == "add") {
-      std::cout << "The sum is: " << (std::stoi(int_1) + std::stoi(int_2)) << std::endl;
+      std::cout << "The sum is: " << (std::stoi(input_1) + std::stoi(input_2)) << std::endl;
     }
     if(desired_operation == "subtract") {
-      std::cout << "The difference is: " << (std::stoi(int_1) - std::stoi(int_2)) << std::endl;
+      std::cout << "The difference is: " << (std::stoi(input_1) - std::stoi(input_2)) << std::endl;
     }
     if(desired_operation == "divide") {
-      int int_1_as_int = std::stoi(int_1);
-      int int_2_as_int = std::stoi(int_2);
-      double quotient {int_1_as_int / double(int_2_as_int)};
+      int input_1_as_int = std::stoi(input_1);
+      int input_2_as_int = std::stoi(input_2);
+      double quotient {input_1_as_int / double(input_2_as_int)};
       std::cout << "The quotient is: " << quotient << std::endl;
     }
   } else {
